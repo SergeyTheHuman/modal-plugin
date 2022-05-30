@@ -1,0 +1,63 @@
+//	Если шрифты подключили локально, то они автоматически конвертируются и попадут в файл fonts.sass, 
+//	тогда расскоментировать строчку ниже
+// @import utils/fonts
+
+// При подключении шрифтов через Google Fonts, ломается импорт в скомпиленном css файле,
+// Google fonts поменяли что-то в API, и теперь их ссылки конфликтуют с минимайзерами и компиляторами.
+// Для решения проблемы можно подключить шрифты через link в pug файле
+@import utils/reset
+@import utils/mixins
+@import utils/global
+@import components/header
+@import components/footer
+
+body
+	background-color: #5a5a5a
+.text
+	font-size: 20px
+	line-height: 1.5em
+.btn
+	font-size: 25px
+	background-color: plum
+	border: darken(plum, 15)
+	padding: 10px 15px
+	transition: $transition
+	cursor: pointer
+	&:hover
+		background-color: darken(plum, 30)
+		color: $color-white
+	&:active
+		transform: translateY(5px)
+
+.modal
+	width: 100%
+	height: 100%
+	position: fixed
+	display: flex
+	justify-content: center
+	align-items: center
+	top: 0
+	left: 0
+	background-color: rgba(0, 0, 0, 0.6)
+	opacity: 0
+	visibility: hidden
+	&__body
+		background-color: white
+		max-width: 50vw
+		height: 400px
+		position: relative
+		overflow-y: auto
+	&__close
+		position: absolute
+		top: 20px
+		right: 20px
+		background-color: red
+		width: 30px
+		height: 30px
+
+.modal--opened
+	opacity: 1
+	visibility: visible
+
+.lock-scroll
+	overflow-y: hidden
